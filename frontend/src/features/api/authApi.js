@@ -16,7 +16,7 @@ export const authApi = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(userLoggedIn({ user: data.user, token: data.token }));
+          dispatch(userLoggedIn({ user: data.user }));
         } catch (error) {
           console.error("Login failed:", error);
         }
