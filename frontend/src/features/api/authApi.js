@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { userLoggedIn } from "../authSlice";
 
-const USER_API = "http://localhost:5000/api/auth";
+const USER_API = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -9,7 +9,7 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials) => ({
-        url: "login",
+        url: "/login",
         method: "POST",
         body: credentials,
       }),
@@ -25,21 +25,21 @@ export const authApi = createApi({
 
     register: builder.mutation({
       query: (userData) => ({
-        url: "register",
+        url: "/register",
         method: "POST",
         body: userData,
       }),
     }),
     logout: builder.mutation({
       query: () => ({
-        url: "logout",
+        url: "/logout",
         method: "POST",
       }),
     }),
 
     loadUser: builder.query({
       query: () => ({
-        url: "getuser",
+        url: "/getuser",
         method: "GET",
       }),
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
