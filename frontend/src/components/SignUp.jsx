@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useRegisterMutation } from "../features/api/authApi";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import bgImage from "../../Images/hack.jpg";
 
 const Signup = () => {
   const [signupInput, setSignupInput] = useState({
@@ -51,9 +52,9 @@ const Signup = () => {
   }, [registerIsSuccess, registerError, registerData]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-orange-50 px-6">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
-        <h2 className="text-2xl font-bold text-gray-800 text-center mb-6">
+    <section className="min-h-screen flex items-center justify-start bg-cover bg-center px-6" style={{ backgroundImage: `url(${bgImage})` }}>
+      <div className="w-full max-w-md bg-white/90 backdrop-blur-sm shadow-xl rounded-3xl p-10 md:ml-16 mt-24">
+        <h2 className="text-3xl font-extrabold text-red-800 text-center mb-8">
           Create New Account
         </h2>
 
@@ -65,7 +66,7 @@ const Signup = () => {
               name="firstName"
               value={signupInput.firstName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full px-5 py-3 bg-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
               placeholder="Your First Name"
               required
             />
@@ -78,7 +79,7 @@ const Signup = () => {
               name="lastName"
               value={signupInput.lastName}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full px-5 py-3 bg-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
               placeholder="Your Last Name"
               required
             />
@@ -91,7 +92,7 @@ const Signup = () => {
               name="email"
               value={signupInput.email}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full px-5 py-3 bg-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
               placeholder="you@example.com"
               required
             />
@@ -104,7 +105,7 @@ const Signup = () => {
               name="password"
               value={signupInput.password}
               onChange={handleChange}
-              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full px-5 py-3 bg-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
               placeholder="Choose a strong password"
               required
             />
@@ -117,7 +118,7 @@ const Signup = () => {
               value={signupInput.role}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="w-full px-5 py-3 bg-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-red-600"
             >
               <option value="">Select Role</option>
               {roles.map((role) => (
@@ -130,7 +131,7 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full bg-orange-500 text-white py-2 rounded-xl font-semibold hover:bg-orange-600 transition"
+            className="w-full bg-red-700 text-white py-3 rounded-2xl font-semibold hover:bg-red-800 transition"
             disabled={registerIsLoading}
           >
             {registerIsLoading ? (
@@ -147,7 +148,7 @@ const Signup = () => {
             Already Registered?{" "}
             <a
               href="/login"
-              className="text-orange-500 font-medium hover:underline"
+              className="text-red-700 font-medium hover:underline"
             >
               Login here
             </a>

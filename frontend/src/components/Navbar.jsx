@@ -11,6 +11,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import logoImg from "../../Images/logo.png";
 // import DarkMode from "@/DarkMode";
 import {
   Sheet,
@@ -43,18 +44,23 @@ const Navbar = () => {
   }, [isSuccess]);
 
   return (
-    <div className="h-16 bg-orange-50 fixed top-0 left-0 right-0 duration-300 z-10">
+    <div className="h-20 bg-transparent fixed top-0 left-0 right-0 z-20">
       {/* Desktop */}
-      <div className="max-w-7xl mx-auto hidden md:flex justify-between items-center gap-10 h-full">
+      <div className="max-w-7xl mx-auto hidden md:flex items-center h-full relative px-8 text-white font-medium tracking-wide">
         <div className="flex items-center gap-2">
-          <Link to="/">
-            <h1 className="hidden md:block font-extrabold text-2xl">
-              Sellium
-            </h1>
-          </Link>
+          <Link to="/"><img src={logoImg} alt="logo" className="h-10" /></Link>
+          <Link to="/" className="hover:underline">Home</Link>
+          <Link to="/price-analysis" className="hover:underline">Price Analysis</Link>
         </div>
-        {/* User icons and dark mode icon  */}
-        <div className="flex items-center gap-8">
+        <div className="absolute left-1/2 -translate-x-1/2 select-none">
+          <Link to="/" className="text-2xl md:text-3xl font-extrabold tracking-[0.3em]">SELLIUM</Link>
+        </div>
+
+        <div className="flex items-center gap-10 ml-auto">
+          {/* Desktop nav links right section */}
+          <Link to="/review" className="hover:underline">Review</Link>
+          <Link to="/contact" className="hover:underline">Contact Us</Link>
+
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -144,7 +150,7 @@ const MobileNavbar = ({ user }) => {
       <SheetTrigger asChild>
         <Button
           size="icon"
-          className="rounded-full hover:bg-gray-200"
+          className="rounded-full hover:bg-white/20"
           variant="outline"
         >
           <Menu />
