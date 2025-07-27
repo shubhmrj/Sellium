@@ -16,7 +16,7 @@ export const authApi = createApi({
       async onQueryStarted(arg, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          dispatch(userLoggedIn({ user: data.user }));
+          dispatch(userLoggedIn({ user: data.user, token: data.token }));
         } catch (error) {
           console.error("Login failed:", error);
         }
@@ -59,4 +59,4 @@ export const {
   useRegisterMutation,
   useLogoutMutation,
   useLoadUserQuery,
-} = authApi;
+} = authApi; // export hooks from the correctly named api
